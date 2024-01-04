@@ -41,7 +41,7 @@ const props = defineProps({
   emits
 */
 
-const emit = defineEmits(['defineEmits'])
+const emit = defineEmits(['deleteClicked'])
 
 /*
   character length

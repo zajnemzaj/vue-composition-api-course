@@ -25,13 +25,14 @@
 
     <Note
       v-for="note in notes"
-      :key="note.id" />
+      :key="note.id"
+      :note="note" />
   </div>
 </template>
 
 <script setup>
 import { ref } from 'vue'
-import { Note } from '@/components/Notes/Note.vue'
+import Note from '@/components/Notes/Note.vue'
 
 const newNote = ref('')
 const newNoteRef = ref(null)

@@ -1,21 +1,18 @@
 <template>
   <nav class="navbar is-fixed-top is-success"
-       role="navigation"
-       aria-label="main navigation">
+    role="navigation"
+    aria-label="main navigation">
     <div class="navbar-brand">
-      <a class="navbar-item"
-         href="https://bulma.io">
-        <img src="https://bulma.io/images/bulma-logo.png"
-             width="112"
-             height="28">
-      </a>
+      <div class="navbar-item is-size-4 is-family-monospace">
+        Noteballs
+      </div>
 
       <a
-         class="navbar-burger"
-         aria-expanded="false"
-         aria-label="menu"
-         data-target="navbarBasicExample"
-         role="button">
+        class="navbar-burger"
+        aria-expanded="false"
+        aria-label="menu"
+        data-target="navbarBasicExample"
+        role="button">
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
@@ -23,50 +20,20 @@
     </div>
 
     <div id="navbarBasicExample"
-         class="navbar-menu">
-      <div class="navbar-start">
-        <a class="navbar-item">
-          Home
-        </a>
-
-        <a class="navbar-item">
-          Documentation
-        </a>
-
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link">
-            More
-          </a>
-
-          <div class="navbar-dropdown">
-            <a class="navbar-item">
-              About
-            </a>
-            <a class="navbar-item">
-              Jobs
-            </a>
-            <a class="navbar-item">
-              Contact
-            </a>
-            <hr class="navbar-divider">
-            <a class="navbar-item">
-              Report an issue
-            </a>
-          </div>
-        </div>
-      </div>
-
+      class="navbar-menu">
       <div class="navbar-end">
-        <div class="navbar-item">
-          <div class="buttons">
-            <a class="button is-primary">
-              <strong>Sign up</strong>
-            </a>
-            <a class="button is-light">
-              Log in
-            </a>
-          </div>
-        </div>
+        <RouterLink
+          class="navbar-item"
+          active-class="is-active"
+          to="/">
+          Notes
+        </RouterLink>
+        <RouterLink
+          class="navbar-item"
+          active-class="is-active"
+          to="/stats">
+          Stats
+        </RouterLink>
       </div>
     </div>
   </nav>

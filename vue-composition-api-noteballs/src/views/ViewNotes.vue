@@ -7,7 +7,8 @@
           <textarea
             v-model="newNote"
             class="textarea"
-            placeholder="Add a new note"></textarea>
+            placeholder="Add a new note"
+            ref="newNoteRef" />
         </div>
       </div>
 
@@ -46,6 +47,7 @@
 import { ref } from "vue";
 
 const newNote = ref('')
+const newNoteRef = ref(null)
 
 const notes = ref([
   {
@@ -59,6 +61,19 @@ const notes = ref([
 ])
 
 const addNote = () => {
-  console.log('addNote');
+  // getting date timestamp
+  let currentDate = new Date().getTime(),
+    id = currentDate.toString()
+  let note = {
+    // should be id: id, but as both are the same it can be just id
+    id,
+    content: newNote.value
+  }
+  // push puts it to the end of the arra, unshift puts it to the start of the array
+  notes.value.unshift(note)
+
+  newNote.value = ''
+
+  newNoteRef.value.focus()
 }
 </script>

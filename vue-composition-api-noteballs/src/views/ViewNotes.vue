@@ -5,6 +5,7 @@
       <div class="field">
         <div class="control">
           <textarea
+            v-model="newNote"
             class="textarea"
             placeholder="Add a new note"></textarea>
         </div>
@@ -12,7 +13,10 @@
 
       <div class="field is-grouped is-grouped-right">
         <div class="control">
-          <button class="button is-link has-background-success">Add New Note</button>
+          <button
+            @click="addNote"
+            :disabled="!newNote"
+            class="button is-link has-background-success">Add New Note</button>
         </div>
       </div>
 
@@ -41,6 +45,8 @@
 <script setup>
 import { ref } from "vue";
 
+const newNote = ref('')
+
 const notes = ref([
   {
     id: 'id1',
@@ -51,4 +57,8 @@ const notes = ref([
     content: 'Shorter note.'
   }
 ])
+
+const addNote = () => {
+  console.log('addNote');
+}
 </script>

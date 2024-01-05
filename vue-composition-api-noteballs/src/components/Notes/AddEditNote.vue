@@ -3,8 +3,8 @@
     <div class="field">
       <div class="control">
         <textarea
-          v-model="propsHelper"
-          @input="$emit('update:modelValue', propsHelper)"
+          v-model="modelValue"
+          @input="$emit('update:modelValue', modelValue)"
           class="textarea"
           placeholder="Add a new note"
           ref="newNoteRef" />
@@ -23,21 +23,12 @@
 <script setup>
 import { ref } from 'vue'
 
-/* 
-  props
-*/
-
-const props = defineProps({
-  modelValue: {
-    type: String,
-    required: true
-  }
+// ideia is from here, since vue 3.4: 
+// https://vuejs.org/guide/components/v-model.html
+const modelValue = defineModel({
+  type: String,
+  reuqired: true
 })
-
-// needed to avoid error since vue 3.2.45
-// https://vuejs.org/guide/components/props.html#one-way-data-flow
-// https://michaelnthiessen.com/avoid-mutating-prop-directly
-const propsHelper = ref(props.modelValue)
 
 /**
  * emits

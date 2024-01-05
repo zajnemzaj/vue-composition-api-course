@@ -52,15 +52,18 @@ const newNoteRef = ref(null)
 
 const addNote = () => {
   // getting date timestamp
-  let currentDate = new Date().getTime(),
-    id = currentDate.toString()
-  let note = {
-    // should be id: id, but as both are the same it can be just id
-    id,
-    content: newNote.value
-  }
-  // push puts it to the end of the arra, unshift puts it to the start of the array
-  notes.value.unshift(note)
+
+  storeNotes.addNote()
+
+  // let currentDate = new Date().getTime(),
+  //   id = currentDate.toString()
+  // let note = {
+  //   // should be id: id, but as both are the same it can be just id
+  //   id,
+  //   content: newNote.value
+  // }
+  // // push puts it to the end of the arra, unshift puts it to the start of the array
+  // notes.value.unshift(note)
 
   newNote.value = ''
 

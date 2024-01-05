@@ -25,6 +25,10 @@ export const useStoreNotes = defineStore('storeNotes', {
         content: newNoteContent
       }
       this.notes.unshift(note)
+    },
+    deleteNote(idToDelete) {
+      // passing the notes and filtering out only the ones which are not the got 'id' as parameter and giving the result back to it sor overwriting the store's values
+      this.notes = this.notes.filter(note => { return note.id !== idToDelete })
     }
   }
 })

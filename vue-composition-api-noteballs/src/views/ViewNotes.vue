@@ -53,7 +53,7 @@ const newNoteRef = ref(null)
 const addNote = () => {
   // getting date timestamp
 
-  storeNotes.addNote()
+  storeNotes.addNote(newNote.value)
 
   // let currentDate = new Date().getTime(),
   //   id = currentDate.toString()

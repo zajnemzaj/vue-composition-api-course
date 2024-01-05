@@ -1,7 +1,7 @@
 <template>
   <NavBar />
 
-  <div class="container is-max-desktop px-2 py-6">
+  <div class="container is-max-desktop px-2 py-6 mt-4">
     <RouterView />
   </div>
 </template>

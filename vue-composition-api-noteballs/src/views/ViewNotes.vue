@@ -2,7 +2,8 @@
   <div class="notes">
 
     <AddEditNote
-      v-model="newNote">
+      v-model="newNote"
+      ref="addEditNoteRef">
       <!-- #buttons is a shorthand to reach this slot: v-slot:buttons -->
       <template #buttons>
         <button
@@ -37,16 +38,13 @@ const storeNotes = useStoreNotes()
 */
 
 const newNote = ref('')
-const newNoteRef = ref(null)
+const addEditNoteRef = ref(null)
 
 const addNote = () => {
   // getting date timestamp
-
   storeNotes.addNote(newNote.value)
-
   newNote.value = ''
-
-  newNoteRef.value.focus()
+  addEditNoteRef.value.focusTextarea()
 }
 
 </script>

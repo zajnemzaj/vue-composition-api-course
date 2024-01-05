@@ -7,7 +7,7 @@
           @input="$emit('update:modelValue', modelValue)"
           class="textarea"
           placeholder="Add a new note"
-          ref="newNoteRef" />
+          ref="textareaRef" />
       </div>
     </div>
 
@@ -21,7 +21,16 @@
 </template>
 
 <script setup>
+
+/**
+ * imports
+ */
+
 import { ref } from 'vue'
+
+/**
+ * model defining instead of props
+ */
 
 // ideia is from here, since vue 3.4: 
 // https://vuejs.org/guide/components/v-model.html
@@ -35,4 +44,19 @@ const modelValue = defineModel({
  */
 
 const emit = defineEmits(['update:modelValue'])
+
+/**
+ * focus textarea
+ */
+
+const textareaRef = ref(null)
+
+const focusTextarea = () => {
+  textareaRef.value.focus()
+}
+
+// needed to expose the function to be found
+defineExpose({
+  focusTextarea
+})
 </script>

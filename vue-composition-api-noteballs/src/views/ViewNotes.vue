@@ -3,6 +3,7 @@
 
     <AddEditNote
       v-model="newNote"
+      placeholder="Add a new note"
       ref="addEditNoteRef">
       <!-- #buttons is a shorthand to reach this slot: v-slot:buttons -->
       <template #buttons>

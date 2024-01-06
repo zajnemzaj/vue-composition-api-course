@@ -2,11 +2,18 @@
   <div class="edit-note">
     <AddEditNote
       v-model="noteContent"
+      bgColor="link"
+      placeholder="Edit note"
+      label="Edit note"
       ref="addEditNoteRef">
       <!-- #buttons is a shorthand to reach this slot: v-slot:buttons -->
       <template #buttons>
         <button
-          class="button is-link has-background-success">Save Note</button>
+          @click="$router.back()"
+          class="button is-link is-light">Cancel</button>
+        <button
+          class="button is-link has-background-link"
+          :disabled="!noteContent">Save Note</button>
       </template>
     </AddEditNote>
   </div>

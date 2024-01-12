@@ -10,8 +10,9 @@
       <template #buttons>
         <button
           @click="$router.back()"
-          class="button is-link is-light">Cancel</button>
+          class="button is-link is-light mr-2">Cancel</button>
         <button
+          @click="handleSaveClicked"
           class="button is-link has-background-link"
           :disabled="!noteContent">Save Note</button>
       </template>
@@ -49,8 +50,14 @@ const storeNotes = useStoreNotes()
 
 const noteContent = ref('')
 
-console.log(route.params.id)
-
 noteContent.value = storeNotes.getNoteContent(route.params.id)
+
+/**
+ * save clicked
+ */
+
+const handleSaveClicked = () => {
+  storeNotes.updateNote(route.params.id, noteContent)
+}
 
 </script>

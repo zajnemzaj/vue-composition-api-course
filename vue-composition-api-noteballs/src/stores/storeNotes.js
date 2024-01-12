@@ -28,13 +28,19 @@ export const useStoreNotes = defineStore('storeNotes', {
     },
     deleteNote(idToDelete) {
       // passing the notes and filtering out only the ones which are not the got 'id' as parameter and giving the result back to it sor overwriting the store's values
-      this.notes = this.notes.filter(note => { return note.id !== idToDelete })
+      // shorthand for 
+      // return { note.id !== idToDelet }
+      this.notes = this.notes.filter(note => note.id !== idToDelete)
+    },
+    updateNote(id, content) {
+      let index = this.notes.findIndex(note => note.id === id)
+      this.notes[index].content = content
     }
   },
   getters: {
     getNoteContent: (state) => {
       return (id) => {
-        return state.notes.filter(note => { return note.id === id })[0].content
+        return state.notes.filter(note => note.id === id)[0].content
       }
     }
   }

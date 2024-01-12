@@ -14,7 +14,7 @@
         </tr>
         <tr>
           <td>Number of Characters (of all notes)</td>
-          <td>XXX</td>
+          <td>{{ storeNotes.totalCharactersCount }}</td>
         </tr>
       </tbody>
     </table>

@@ -14,11 +14,12 @@
           @input="$emit('update:modelValue', modelValue)"
           class="textarea"
           :placeholder="placeholder"
-          ref="textareaRef" />
+          ref="textareaRef"
+          v-autofocus />
       </div>
     </div>
 
-    <div class="field is-grouped is-grouped-right">
+    <div class=" field is-grouped is-grouped-right">
       <div class="control">
         <slot name="buttons" />
       </div>
@@ -84,4 +85,14 @@ const focusTextarea = () => {
 defineExpose({
   focusTextarea
 })
+
+/**
+ * directives
+ */
+
+const vAutofocus = {
+  mounted: (el) => {
+    el.focus()
+  }
+}
 </script>

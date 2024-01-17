@@ -53,6 +53,7 @@ const addNote = () => {
 * watch characters
 */
 
+// no second parameter, it will defualt to the given 100 in useWatchCharacters.js
 useWatchCharacters(newNote)
 
 </script>

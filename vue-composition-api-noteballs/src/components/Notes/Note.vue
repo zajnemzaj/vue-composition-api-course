@@ -22,7 +22,8 @@
         href="#">Delete</a>
     </footer>
     <ModelDeleteNote
-      v-if="modals.deleteNote" />
+      v-if="modals.deleteNote"
+      v-model="modals.deleteNote" />
   </div>
 </template>
 
@@ -67,6 +68,6 @@ const characterLength = computed(() => {
  */
 
 const modals = reactive({
-  deleteNote: true
+  deleteNote: false
 })
 </script>

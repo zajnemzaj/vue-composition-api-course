@@ -23,7 +23,8 @@
     </footer>
     <ModelDeleteNote
       v-if="modals.deleteNote"
-      v-model="modals.deleteNote" />
+      v-model="modals.deleteNote"
+      :noteId="note.id" />
   </div>
 </template>
 

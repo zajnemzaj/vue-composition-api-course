@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { collection, onSnapshot, doc, setDoc } from 'firebase/firestore'
+import { collection, onSnapshot, doc, setDoc, deleteDoc } from 'firebase/firestore'
 import { db } from '@/js/firebase'
 
 const notesCollectionRef = collection(db, 'notes')
@@ -36,12 +36,6 @@ export const useStoreNotes = defineStore('storeNotes', {
     async addNote(newNoteContent) {
       let currentDate = new Date().getTime(),
           id = currentDate.toString()
-      // let note = {
-      // // should be id: id, but as both are the same it can be just id
-      //   id,
-      //   content: newNoteContent
-      // }
-      // this.notes.unshift(note)
 
       await setDoc(doc(notesCollectionRef, id), {
         content: newNoteContent
@@ -49,11 +43,8 @@ export const useStoreNotes = defineStore('storeNotes', {
       });
 
     },
-    deleteNote(idToDelete) {
-      // passing the notes and filtering out only the ones which are not the got 'id' as parameter and giving the result back to it sor overwriting the store's values
-      // shorthand for 
-      // return { note.id !== idToDelet }
-      this.notes = this.notes.filter(note => note.id !== idToDelete)
+    async deleteNote(idToDelete) {
+      await deleteDoc(doc(notesCollectionRef, idToDelete))
     },
     updateNote(id, content) {
       let index = this.notes.findIndex(note => note.id === id)

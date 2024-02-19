@@ -21,11 +21,13 @@ export const useStoreNotes = defineStore('storeNotes', {
         //   id: 'id2',
         //   content: 'Shorter note.'
         // }
-      ]
+      ],
+      notesLoaded: false
     }
   },
   actions: {
     async getNotes() {
+      this.notesLoaded = false
       onSnapshot(notesCollectionQuery, (querySnapshot) => {
         let notes = []
         querySnapshot.forEach((doc) => {
@@ -36,7 +38,14 @@ export const useStoreNotes = defineStore('storeNotes', {
           }
           notes.push(note)
         })
+        // time out 2sec before notes are loading to test progress bar
+        // setTimeout(() => {
+        //   this.notes = notes
+        //   this.notesLoaded = true
+        // }, 2000)
+
         this.notes = notes
+        this.notesLoaded = true
       })
     },
     async addNote(newNoteContent) {

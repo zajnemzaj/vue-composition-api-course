@@ -99,7 +99,7 @@ const onSubmit = () => {
       storeAuth.registerUser(credentials)
     }
     else {
-      console.log('login user with these credentials: ', credentials)
+      storeAuth.loginUser(credentials)
     }
   }
 }

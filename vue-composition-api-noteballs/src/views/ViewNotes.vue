@@ -36,7 +36,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import Note from '@/components/Notes/Note.vue'
 import AddEditNote from '@/components/Notes/AddEditNote.vue'
 import { useStoreNotes } from '@/stores/storeNotes'
@@ -47,7 +47,6 @@ import { useWatchCharacters } from "@/use/useWatchCharacters"
 */
 
 const storeNotes = useStoreNotes()
-
 
 /*
   notes
@@ -70,4 +69,11 @@ const addNote = () => {
 // no second parameter, it will defualt to the given 100 in useWatchCharacters.js
 useWatchCharacters(newNote)
 
+/**
+ * mounted
+ */
+
+onMounted(() => {
+  storeNotes.getNotes()
+})
 </script>

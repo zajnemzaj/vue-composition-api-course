@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
+import { signOut, createUserWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '@/js/firebase'
 
 export const useStoreAuth = defineStore('storeAuth', {
@@ -18,9 +18,13 @@ export const useStoreAuth = defineStore('storeAuth', {
           const errorMessage = error.message
           console.log('error.message: ', error.message)
         })
+    },
+    logoutUser() {
+      signOut(auth).then(() => {
+        console.log('User signed out')
+      }).catch((error) => {
+        console.log(error.message)
+      })
     }
-  },
-  getters: {
-
   }
 })

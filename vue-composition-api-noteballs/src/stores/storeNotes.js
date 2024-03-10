@@ -32,7 +32,7 @@ export const useStoreNotes = defineStore('storeNotes', {
     init() {
       const storeAuth = useStoreAuth()
       // checking if we have user id
-      console.log('storeAuth.user.id', storeAuth.user.id)
+      // console.log('storeAuth.user.id', storeAuth.user.id)
       // initialize our database refs
       notesCollectionRef = collection(db, 'users', storeAuth.user.id, 'notes')
       notesCollectionQuery = query(notesCollectionRef, orderBy('date', 'desc'))
@@ -60,6 +60,8 @@ export const useStoreNotes = defineStore('storeNotes', {
 
         this.notes = notes
         this.notesLoaded = true
+      }, error => {
+        console.log('error.message: ', error.message)
       })
     },
     clearNotes() {
